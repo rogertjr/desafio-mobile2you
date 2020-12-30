@@ -11,7 +11,7 @@ import SwiftUI
 struct Desafio_M2YApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MovieDetailView()
         }
     }
 }

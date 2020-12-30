@@ -19,11 +19,12 @@ struct MovieDetailCardView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(self.data.title)
                     .fontWeight(.bold)
+                    .foregroundColor(.yellow)
                 
                 HStack {
                     Text(self.data.year)
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.yellow)
                     
                     Text(self.data.category)
                         .font(.caption)

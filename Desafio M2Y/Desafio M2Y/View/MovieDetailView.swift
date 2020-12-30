@@ -14,16 +14,21 @@ struct MovieDetailView: View {
     var body: some View {
         ZStack(alignment: .top, content: {
             
-            
-            
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    GeometryReader{g in
-                        Image("detail-header")
-                            .resizable()
-                            .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0 )
-                            .frame(height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
-
+                    ZStack{
+                        GeometryReader { geometry in
+                            Image("detail-header")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geometry.size.width, height: self.getCoverHeight(geometry))
+                                .clipped()
+                                .offset(x: 0, y: self.getCoverOffset(geometry))
+                        }
+                        
+                        Rectangle()
+                        .foregroundColor(.clear)
+                        .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
                     }
                     .frame(height: UIScreen.main.bounds.height / 2.2)
                     
@@ -32,6 +37,8 @@ struct MovieDetailView: View {
                             Text("Fight Club")
                                 .font(.title)
                                 .fontWeight(.bold)
+                                .foregroundColor(.yellow)
+                            
                             
                             Spacer()
                             
@@ -40,7 +47,7 @@ struct MovieDetailView: View {
                             }) {
                                 Image(systemName: self.like ? "heart.fill" : "heart")
                                     .font(.system(size: 20))
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.yellow)
                             }
                         }
                         
@@ -74,10 +81,93 @@ struct MovieDetailView: View {
                     .padding()
                     
                     Spacer()
+                    
+                    VStack{
+                        Button(action: { }) {
+                            
+                            HStack {
+                                Image(systemName: "heart")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.yellow)
+
+                                Text("Like")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.yellow)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.yellow, lineWidth: 1)
+                            )
+                            .padding(.leading)
+                            .padding(.trailing)
+                        }
+                        
+                        Button(action: { }) {
+                            Text("Adicionar a Minha Lista")
+                                .font(.system(size: 16))
+                                .foregroundColor(.yellow)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.yellow, lineWidth: 1)
+                                )
+                                .padding(.leading)
+                                .padding(.trailing)
+                        }
+                    }
+                    .padding(.bottom, 20)
+                    
+                    
+                    VStack{
+                        HStack{
+                            Text("Made with")
+                                .foregroundColor(.yellow)
+                            
+                            Image(systemName: "heart.fill")
+                                .foregroundColor(.yellow)
+                            
+                            Text("by Rogério Toledo")
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                        }
+                        
+                        Text("Desafio Mobile 2 You")
+                            .foregroundColor(.yellow)
+                    }
+                    .padding(.bottom, 40)
+                    
                 }
             }
         })
-        .edgesIgnoringSafeArea(.top)
+        .edgesIgnoringSafeArea(.all)
+    }
+    
+    private func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
+        geometry.frame(in: .global).minY
+    }
+        
+    private func getCoverOffset(_ geometry: GeometryProxy) -> CGFloat {
+        let offset = getScrollOffset(geometry)
+
+        if offset > 0 {
+            return -offset
+        }
+        
+        return 0
+    }
+    
+    private func getCoverHeight(_ geometry: GeometryProxy) -> CGFloat {
+        let offset = getScrollOffset(geometry)
+        let imageHeight = geometry.size.height
+
+        if offset > 0 {
+            return imageHeight + offset
+        }
+
+        return imageHeight
     }
 }
 

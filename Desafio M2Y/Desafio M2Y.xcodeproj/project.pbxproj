@@ -3,27 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		370B2D3C259BE4C50047F80E /* Desafio_M2YApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B2D3B259BE4C50047F80E /* Desafio_M2YApp.swift */; };
-		370B2D3E259BE4C50047F80E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B2D3D259BE4C50047F80E /* ContentView.swift */; };
 		370B2D40259BE4D30047F80E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370B2D3F259BE4D30047F80E /* Assets.xcassets */; };
 		370B2D43259BE4D30047F80E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370B2D42259BE4D30047F80E /* Preview Assets.xcassets */; };
 		370B2D51259BF24A0047F80E /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B2D50259BF24A0047F80E /* MovieDetailView.swift */; };
 		370B2D69259BF8DE0047F80E /* MovieDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B2D68259BF8DE0047F80E /* MovieDetailCardView.swift */; };
+		373C0167259F510F00AD9DDB /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C0166259F510F00AD9DDB /* MovieDetail.swift */; };
+		37A5A8D6259D319200DD792C /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8D5259D319200DD792C /* MovieResponse.swift */; };
+		37A5A8D9259D31A800DD792C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8D8259D31A800DD792C /* Movie.swift */; };
+		37A5A8DC259D31C100DD792C /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8DB259D31C100DD792C /* MovieViewModel.swift */; };
+		37A5A8E5259D32A700DD792C /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8E4259D32A700DD792C /* MovieService.swift */; };
+		37A5A8E8259D32B700DD792C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8E7259D32B700DD792C /* API.swift */; };
+		37A5A8EB259D3B1300DD792C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8EA259D3B1300DD792C /* Genre.swift */; };
+		37A5A8F4259D47F800DD792C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 37A5A8F3259D47F800DD792C /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		370B2D38259BE4C50047F80E /* Desafio M2Y.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio M2Y.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		370B2D3B259BE4C50047F80E /* Desafio_M2YApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_M2YApp.swift; sourceTree = "<group>"; };
-		370B2D3D259BE4C50047F80E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		370B2D3F259BE4D30047F80E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370B2D42259BE4D30047F80E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		370B2D44259BE4D30047F80E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		370B2D50259BF24A0047F80E /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		370B2D68259BF8DE0047F80E /* MovieDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailCardView.swift; sourceTree = "<group>"; };
+		373C0166259F510F00AD9DDB /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		37A5A8D5259D319200DD792C /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
+		37A5A8D8259D31A800DD792C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		37A5A8DB259D31C100DD792C /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		37A5A8E4259D32A700DD792C /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		37A5A8E7259D32B700DD792C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		37A5A8EA259D3B1300DD792C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A5A8F4259D47F800DD792C /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +93,6 @@
 		370B2D4B259BE4FA0047F80E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				370B2D3D259BE4C50047F80E /* ContentView.swift */,
 				370B2D50259BF24A0047F80E /* MovieDetailView.swift */,
 				370B2D68259BF8DE0047F80E /* MovieDetailCardView.swift */,
 			);
@@ -89,6 +102,7 @@
 		370B2D4C259BE51D0047F80E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				37A5A8DB259D31C100DD792C /* MovieViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -96,6 +110,8 @@
 		370B2D4D259BE5240047F80E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				37A5A8E4259D32A700DD792C /* MovieService.swift */,
+				37A5A8E7259D32B700DD792C /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -103,6 +119,10 @@
 		370B2D4E259BE52B0047F80E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37A5A8D5259D319200DD792C /* MovieResponse.swift */,
+				37A5A8D8259D31A800DD792C /* Movie.swift */,
+				37A5A8EA259D3B1300DD792C /* Genre.swift */,
+				373C0166259F510F00AD9DDB /* MovieDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +143,9 @@
 			dependencies = (
 			);
 			name = "Desafio M2Y";
+			packageProductDependencies = (
+				37A5A8F3259D47F800DD792C /* SDWebImageSwiftUI */,
+			);
 			productName = "Desafio M2Y";
 			productReference = 370B2D38259BE4C50047F80E /* Desafio M2Y.app */;
 			productType = "com.apple.product-type.application";
@@ -150,6 +173,9 @@
 				Base,
 			);
 			mainGroup = 370B2D2F259BE4C50047F80E;
+			packageReferences = (
+				37A5A8F2259D47F800DD792C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 370B2D39259BE4C50047F80E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -176,10 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A5A8D9259D31A800DD792C /* Movie.swift in Sources */,
 				370B2D69259BF8DE0047F80E /* MovieDetailCardView.swift in Sources */,
+				37A5A8DC259D31C100DD792C /* MovieViewModel.swift in Sources */,
+				373C0167259F510F00AD9DDB /* MovieDetail.swift in Sources */,
 				370B2D51259BF24A0047F80E /* MovieDetailView.swift in Sources */,
-				370B2D3E259BE4C50047F80E /* ContentView.swift in Sources */,
+				37A5A8D6259D319200DD792C /* MovieResponse.swift in Sources */,
+				37A5A8EB259D3B1300DD792C /* Genre.swift in Sources */,
 				370B2D3C259BE4C50047F80E /* Desafio_M2YApp.swift in Sources */,
+				37A5A8E8259D32B700DD792C /* API.swift in Sources */,
+				37A5A8E5259D32A700DD792C /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.decodely.Desafio-M2Y";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -342,7 +374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.decodely.Desafio-M2Y";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -368,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		37A5A8F2259D47F800DD792C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37A5A8F3259D47F800DD792C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37A5A8F2259D47F800DD792C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 370B2D30259BE4C50047F80E /* Project object */;
 }

@@ -6,19 +6,26 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MovieDetailView: View {
     
+    // MARK: - PROPERTIES
+    static let movieID = 550
+    
     @State var like = false
- 
+    @State var isAnimating: Bool = false
+    @ObservedObject var vm = MovieViewModel(movieID: movieID)
+    
+    // MARK: - BODY
     var body: some View {
         ZStack(alignment: .top, content: {
-            
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    ZStack{
+                    // MARK: -  TOPO
+                    ZStack{ // HERO IMAGE
                         GeometryReader { geometry in
-                            Image("detail-header")
+                            AnimatedImage(url: self.vm.movieDetails?.poster.map {MovieService.imageBase.appendingPathComponent($0)})
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: geometry.size.width, height: self.getCoverHeight(geometry))
@@ -29,19 +36,20 @@ struct MovieDetailView: View {
                         Rectangle()
                         .foregroundColor(.clear)
                         .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
-                    }
+                    } //: ZSTACK
                     .frame(height: UIScreen.main.bounds.height / 2.2)
                     
+                    // MARK: - MIDDLE
                     VStack(alignment: .leading){
-                        HStack {
-                            Text("Fight Club")
+                        HStack { // TITLE LABEL
+                            Text(self.vm.movieDetails?.title ?? "")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(.yellow)
                             
-                            
                             Spacer()
                             
+                            // LIKE BUTTON
                             Button(action: {
                                 self.like.toggle()
                             }) {
@@ -49,7 +57,7 @@ struct MovieDetailView: View {
                                     .font(.system(size: 20))
                                     .foregroundColor(.yellow)
                             }
-                        }
+                        } //: HSTACK
                         
                         Spacer()
                         
@@ -58,54 +66,61 @@ struct MovieDetailView: View {
                                 Image(systemName: "heart.fill")
                                     .foregroundColor(.gray)
                                 
-                                Text("999 likes")
-                                    .foregroundColor(.gray)
-                            }
+                                HStack{
+                                    Text(String(self.vm.movieDetails?.votes ?? 0))
+                                    Text("likes")
+                                } //: HSTACK
+                                .foregroundColor(.gray)
+                            } //: HSTACK
                             
                             HStack {
-                                Image(systemName: "circle")
+                                Image(systemName: "video")
                                     .foregroundColor(.gray)
                                 
-                                Text("Popularity")
+                                HStack{
+                                    Text(String(self.vm.movieDetails?.popularity ?? 0))
+                                    Text("views")
+                                } //: HSTACK
                                     .foregroundColor(.gray)
-                            }
-                        }
+                            } //: HSTACK
+                        } //: HSTACK
                         
                         VStack(spacing: 20) {
-                            ForEach(data){ i in
-                                MovieDetailCardView(data: i)
+                            // SIMILAR MOVIES LIST
+                            ForEach(vm.movieSimilarMovieList){ movie in
+                                MovieDetailCardView(data: movie)
                             }
-                        }
+                        } //: VSTACK
                         .padding(.top)
-                    }
+                    }  //: VSTACK
                     .padding()
                     
                     Spacer()
-                    
-                    VStack{
-                        Button(action: { }) {
-                            
+                    // MARK: - BOTTOM
+                    VStack{ // ACTION BUTTONS
+                        Button(action: { self.like.toggle() }) {
                             HStack {
-                                Image(systemName: "heart")
+                                Image(systemName: self.like ? "heart.fill" : "heart")
                                     .font(.system(size: 16))
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(self.like ? .black : .yellow)
 
-                                Text("Like")
+                                Text(self.like ? "Liked" : "Like")
                                     .font(.system(size: 16))
-                                    .foregroundColor(.yellow)
-                            }
+                                    .foregroundColor(self.like ? .black : .yellow)
+                            } //: HSTACK
                             .frame(maxWidth: .infinity)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
                                     .stroke(Color.yellow, lineWidth: 1)
                             )
+                            .background(self.like ? .yellow : Color.clear)
                             .padding(.leading)
                             .padding(.trailing)
-                        }
+                        } //: BUTTON
                         
                         Button(action: { }) {
-                            Text("Adicionar a Minha Lista")
+                            Text("Add to My List")
                                 .font(.system(size: 16))
                                 .foregroundColor(.yellow)
                                 .frame(maxWidth: .infinity)
@@ -116,11 +131,11 @@ struct MovieDetailView: View {
                                 )
                                 .padding(.leading)
                                 .padding(.trailing)
-                        }
+                        } //: BUTTON
                     }
                     .padding(.bottom, 20)
                     
-                    
+                    // PROJECT LABELS
                     VStack{
                         HStack{
                             Text("Made with")
@@ -132,19 +147,25 @@ struct MovieDetailView: View {
                             Text("by Rogério Toledo")
                                 .fontWeight(.bold)
                                 .foregroundColor(.gray)
-                        }
+                        } //: HSTACK
                         
-                        Text("Desafio Mobile 2 You")
+                        Text("Desafio Mobile2You")
                             .foregroundColor(.yellow)
-                    }
+                    } //: VSTACK
                     .padding(.bottom, 40)
                     
-                }
+                }  //: VSTACK
+            } //: SCROLLVIEW
+        }) //: ZSTACK
+        .onAppear{
+            withAnimation(.easeOut(duration: 0.5)){
+                isAnimating = true
             }
-        })
+        }
         .edgesIgnoringSafeArea(.all)
     }
     
+    // MARK: - FUNCTIONS
     private func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
         geometry.frame(in: .global).minY
     }
@@ -170,23 +191,3 @@ struct MovieDetailView: View {
         return imageHeight
     }
 }
-
-
-struct Relacionado: Identifiable {
-    var id: Int
-    var image: String
-    var title: String
-    var year: String
-    var category: String
-    
-}
-
-var data = [
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama"),
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama"),
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama"),
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama"),
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama"),
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama"),
-    Relacionado(id: 0, image: "detail-header", title: "Clube da Luta", year: "1990", category: "Fight, Drama")
-]

@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MovieDetailCardView: View {
-    var data : Relacionado
+    // MARK: - PROPERTIES
+    var data : Movie
     
+    // MARK: - BODY
     var body: some View {
+        
         HStack(spacing: 20) {
-            Image(self.data.image)
+            AnimatedImage(url: self.data.poster.map {MovieService.imageBase.appendingPathComponent($0)})
                 .resizable()
                 .frame(width: 70, height: 100)
             
@@ -22,17 +26,31 @@ struct MovieDetailCardView: View {
                     .foregroundColor(.yellow)
                 
                 HStack {
-                    Text(self.data.year)
+                    Text(self.data.date.onlyYear ?? "")
                         .font(.caption)
                         .foregroundColor(.yellow)
                     
-                    Text(self.data.category)
+                    Text("Genre")
                         .font(.caption)
                         .foregroundColor(.gray)
-                }
-            }
+                } //: HSTACK
+            } //: VSTACK
             
             Spacer(minLength: 0)
+        } //: HSTACK
+    }
+    
+}
+
+// MARK: - EXTENSION / UTILITIES
+extension String {
+    var onlyYear: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "yyyy"
+            return dateFormatter.string(from: date)
         }
+        return nil
     }
 }

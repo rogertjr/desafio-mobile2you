@@ -14,6 +14,7 @@ struct Movie: Codable, Identifiable {
     let title: String
     let date: String
     let poster: String?
+    let genreIds: [Int]?
 
     enum CodingKeys: String, CodingKey {
         case movieId = "id"
@@ -21,5 +22,6 @@ struct Movie: Codable, Identifiable {
         case title
         case date = "release_date"
         case poster = "poster_path"
+        case genreIds = "genre_ids"
     }
 }

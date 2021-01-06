@@ -12,6 +12,7 @@ class MovieViewModel: ObservableObject {
 
     @Published var movieDetails: MovieDetail?
     @Published var movieSimilarMovieList: [Movie] = []
+    @Published var isLoading = true
     
     var task: AnyCancellable?
     
@@ -20,18 +21,19 @@ class MovieViewModel: ObservableObject {
     }
     
 }
-
+	
 extension MovieViewModel {
     
     func getMovieDetails(id: Int) {
+        self.isLoading = true
         task = MovieService.getDetails(movieID: id)
             .mapError({ (error) -> Error in
                 print(error)
+                self.isLoading = false
                 return error
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: {
-                    print($0) // todo: remover
                     self.movieDetails = $0
                     self.getSimilarMovies(id: id)
             })
@@ -41,11 +43,12 @@ extension MovieViewModel {
         task = MovieService.getSimilar(movieID: id)
             .mapError({ (error) -> Error in
                 print(error)
+                self.isLoading = false
                 return error
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: {
-                    print($0.movies)
+                    self.isLoading = false
                     self.movieSimilarMovieList = $0.movies
             })
     }

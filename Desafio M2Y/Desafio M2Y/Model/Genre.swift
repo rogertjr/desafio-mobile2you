@@ -6,14 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Genre: Codable, Identifiable {
-    var id = UUID()
-    let genreId: Int
+struct GenreResponse: Decodable {
+    let genres: [Genre]
+}
+
+struct Genre: Decodable, Identifiable {
+    let id: Int
     let name: String
-    
-    enum CodingKeys: String, CodingKey {
-        case genreId = "id"
-        case name
+}
+
+extension Array where Element == Genre {
+    var formattedString: String {
+        map { $0.name }.joined(separator: ", ")
     }
 }

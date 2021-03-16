@@ -20,6 +20,7 @@
 		37A5A8E8259D32B700DD792C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8E7259D32B700DD792C /* API.swift */; };
 		37A5A8EB259D3B1300DD792C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5A8EA259D3B1300DD792C /* Genre.swift */; };
 		37A5A8F4259D47F800DD792C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 37A5A8F3259D47F800DD792C /* SDWebImageSwiftUI */; };
+		3E5FE19B25FF82B00029B51C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FE19A25FF82B00029B51C /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		37A5A8E4259D32A700DD792C /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		37A5A8E7259D32B700DD792C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		37A5A8EA259D3B1300DD792C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		3E5FE19A25FF82B00029B51C /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		370B2D3A259BE4C50047F80E /* Desafio M2Y */ = {
 			isa = PBXGroup;
 			children = (
+				3E5FE19825FF82960029B51C /* Utility */,
 				370B2D4E259BE52B0047F80E /* Model */,
 				370B2D4D259BE5240047F80E /* Services */,
 				370B2D4C259BE51D0047F80E /* ViewModel */,
@@ -125,6 +128,22 @@
 				373C0166259F510F00AD9DDB /* MovieDetail.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3E5FE19825FF82960029B51C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FE19925FF82A10029B51C /* Extension */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		3E5FE19925FF82A10029B51C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FE19A25FF82B00029B51C /* String+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +231,7 @@
 				370B2D3C259BE4C50047F80E /* Desafio_M2YApp.swift in Sources */,
 				37A5A8E8259D32B700DD792C /* API.swift in Sources */,
 				37A5A8E5259D32A700DD792C /* MovieService.swift in Sources */,
+				3E5FE19B25FF82B00029B51C /* String+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

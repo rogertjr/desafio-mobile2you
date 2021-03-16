@@ -14,6 +14,8 @@ class MovieViewModel: ObservableObject {
     @Published var movieSimilarMovieList: [Movie] = []
     @Published var isLoading = true
     
+    @Published var like = false
+    
     var task: AnyCancellable?
     
     init(movieID: Int) {
@@ -25,9 +27,9 @@ class MovieViewModel: ObservableObject {
 extension MovieViewModel {
     
     func getMovieDetails(id: Int) {
-        self.isLoading = true
+        isLoading = true
         task = MovieService.getDetails(movieID: id)
-            .mapError({ (error) -> Error in
+            .mapError({ error -> Error in
                 print(error)
                 self.isLoading = false
                 return error
